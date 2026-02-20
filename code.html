@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kenya Meat Interactive Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#C1272D", // Deep Red
+                        accent: "#FD7E14", // Orange highlight
+                        "primary-dark": "#8a1c20",
+                        "background-light": "#FAFAFA",
+                        "background-dark": "#121212",
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#1E1E1E",
+                        "text-light": "#333333",
+                        "text-dark": "#E0E0E0",
+                        "text-muted": "#666666",
+                    },
+                    fontFamily: {
+                        display: ["Oswald", "sans-serif"],
+                        body: ["Roboto", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                    animation: {
+                        'slide': 'slide 15s infinite',
+                    },
+                    keyframes: {
+                        slide: {
+                            '0%, 30%': { transform: 'translateX(0)' },
+                            '33%, 63%': { transform: 'translateX(-100%)' },
+                            '66%, 96%': { transform: 'translateX(-200%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        }
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .price-option:checked + label {
+        background-color: #FD7E14;
+        color: white;
+        transform: scale(1.02);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .price-option:checked + label span {
+        color: white !important;
+    }
+    .price-option:checked + label .material-symbols-outlined {
+        color: white !important;
+    }
+    #mobile-menu-toggle:checked ~ #mobile-menu-overlay {
+        display: flex;
+    }.slider-container {
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+    }
+    .slide-item {
+        scroll-snap-align: start;
+    }input[name="slider_nav"]:checked + label {
+        background-color: #FFFFFF;
+        width: 24px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-body transition-colors duration-300 antialiased selection:bg-primary selection:text-white pb-20">
+<input class="hidden" id="mobile-menu-toggle" type="checkbox"/>
+<header class="fixed top-0 w-full z-50 bg-white/95 dark:bg-surface-dark/95 backdrop-blur-sm border-b border-gray-100 dark:border-gray-800 shadow-sm transition-colors duration-300">
+<div class="px-4 h-16 flex items-center justify-between">
+<label class="p-2 -ml-2 text-text-light dark:text-text-dark hover:text-primary transition-colors group relative cursor-pointer" for="mobile-menu-toggle">
+<span class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform">menu</span>
+</label>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">restaurant_menu</span>
+<div class="flex flex-col leading-none">
+<span class="font-display font-bold text-xl uppercase tracking-wider text-black dark:text-white">KENYA MEAT</span>
+<span class="text-[10px] text-primary uppercase font-bold tracking-widest -mt-1">Premium Butchery</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-text-light dark:text-text-dark hover:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<div class="relative">
+<button class="text-text-light dark:text-text-dark hover:text-primary transition-colors">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold h-4 w-4 flex items-center justify-center rounded-full">2</span>
+</div>
+</div>
+</div>
+</header>
+<div class="fixed inset-0 bg-black/50 z-40 hidden w-full h-full" id="mobile-menu-overlay">
+<div class="bg-white dark:bg-surface-dark w-64 h-full shadow-2xl flex flex-col transform transition-transform duration-300 overflow-y-auto border-r border-gray-200 dark:border-gray-800">
+<div class="p-4 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-black/20">
+<span class="font-display font-bold text-lg text-primary">MENU</span>
+<label class="cursor-pointer p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" for="mobile-menu-toggle">
+<span class="material-symbols-outlined text-xl">close</span>
+</label>
+</div>
+<nav class="flex flex-col p-4 space-y-1">
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-text-light dark:text-gray-200 hover:text-primary dark:hover:text-primary font-display font-medium transition-all" href="#">
+<span class="material-symbols-outlined text-xl">home</span> Home
+            </a>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-text-light dark:text-gray-200 hover:text-primary dark:hover:text-primary font-display font-medium transition-all" href="#">
+<span class="material-symbols-outlined text-xl">history_edu</span> Our Story
+            </a>
+<div class="h-px bg-gray-100 dark:bg-gray-800 my-2"></div>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-text-light dark:text-gray-200 hover:text-primary dark:hover:text-primary font-display font-medium transition-all" href="#">
+<span class="material-symbols-outlined text-xl">lunch_dining</span> Shop Beef
+            </a>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-text-light dark:text-gray-200 hover:text-primary dark:hover:text-primary font-display font-medium transition-all" href="#">
+<span class="material-symbols-outlined text-xl">kebab_dining</span> Shop Goat
+            </a>
+<div class="h-px bg-gray-100 dark:bg-gray-800 my-2"></div>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-text-light dark:text-gray-200 hover:text-primary dark:hover:text-primary font-display font-medium transition-all" href="#">
+<span class="material-symbols-outlined text-xl">request_quote</span> Price List
+            </a>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-accent font-display font-bold transition-all" href="#">
+<span class="material-symbols-outlined text-xl">local_offer</span> Special Offers
+            </a>
+<div class="h-px bg-gray-100 dark:bg-gray-800 my-2"></div>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-text-light dark:text-gray-200 hover:text-primary dark:hover:text-primary font-display font-medium transition-all" href="#">
+<span class="material-symbols-outlined text-xl">perm_phone_msg</span> Contact Us
+            </a>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-text-light dark:text-gray-200 hover:text-primary dark:hover:text-primary font-display font-medium transition-all" href="#">
+<span class="material-symbols-outlined text-xl">account_circle</span> My Account
+            </a>
+</nav>
+<div class="mt-auto p-4 bg-gray-50 dark:bg-black/20 text-center text-xs text-gray-500">
+<p class="mb-2">Nairobi's Premium Butchery</p>
+<div class="flex justify-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-accent"></div>
+<div class="w-2 h-2 rounded-full bg-gray-800"></div>
+</div>
+</div>
+</div>
+<label class="flex-1 cursor-default" for="mobile-menu-toggle"></label>
+</div>
+<main class="pt-16">
+<section class="relative h-[550px] w-full overflow-hidden bg-gray-900 group">
+<input checked="" class="hidden peer/slide1" id="slide1" name="slider" type="radio"/>
+<input class="hidden peer/slide2" id="slide2" name="slider" type="radio"/>
+<input class="hidden peer/slide3" id="slide3" name="slider" type="radio"/>
+<div class="absolute inset-0 w-[300%] h-full flex transition-transform duration-700 ease-in-out peer-checked/slide1:translate-x-0 peer-checked/slide2:-translate-x-1/3 peer-checked/slide3:-translate-x-2/3">
+<div class="w-1/3 h-full relative flex-shrink-0">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?q=80&amp;w=2070&amp;auto=format&amp;fit=crop')] bg-cover bg-center"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/30"></div>
+<div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 max-w-lg mx-auto pt-10">
+<span class="block text-accent font-display uppercase tracking-[0.2em] text-sm mb-4 font-bold animate-[fadeInDown_1s_ease-out]">Premium Quality</span>
+<h1 class="font-display font-bold text-5xl md:text-6xl text-white mb-6 leading-[1.1] drop-shadow-xl animate-[fadeInUp_1s_ease-out_0.2s_both]">NAIROBI'S FINEST<br/>BEEF &amp; GOAT</h1>
+<p class="text-gray-200 text-base mb-8 font-light leading-relaxed max-w-xs animate-[fadeInUp_1s_ease-out_0.4s_both]">Sourced from the best ranches. Expertly cut for your table.</p>
+<button class="bg-primary text-white hover:bg-primary-dark font-bold py-4 px-10 rounded-full uppercase text-sm tracking-widest transition-all transform hover:scale-105 shadow-[0_10px_20px_rgba(193,39,45,0.3)] animate-[fadeInUp_1s_ease-out_0.6s_both]">Shop Beef</button>
+</div>
+</div>
+<div class="w-1/3 h-full relative flex-shrink-0">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544025162-d76694265947?q=80&amp;w=2069&amp;auto=format&amp;fit=crop')] bg-cover bg-center"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30"></div>
+<div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 max-w-lg mx-auto pt-10">
+<div class="bg-primary px-4 py-1 mb-4 rounded-sm animate-[zoomIn_0.8s_ease-out]">
+<span class="text-white font-display uppercase tracking-widest text-xs font-bold">Limited Time Only</span>
+</div>
+<h1 class="font-display font-bold text-5xl md:text-6xl text-white mb-6 leading-[1.1] drop-shadow-xl">15% OFF<br/>GOAT RIBS</h1>
+<p class="text-gray-200 text-base mb-8 font-light leading-relaxed max-w-xs">Perfect for your weekend Choma. Don't miss out on this offer.</p>
+<button class="bg-white text-primary hover:bg-gray-100 font-bold py-4 px-10 rounded-full uppercase text-sm tracking-widest transition-all transform hover:scale-105 shadow-xl">Order Now</button>
+</div>
+</div>
+<div class="w-1/3 h-full relative flex-shrink-0">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1616431970220-41bf7700df23?q=80&amp;w=2070&amp;auto=format&amp;fit=crop')] bg-cover bg-center"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/30"></div>
+<div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 max-w-lg mx-auto pt-10">
+<span class="block text-accent font-display uppercase tracking-[0.2em] text-sm mb-4 font-bold">Fast &amp; Reliable</span>
+<h1 class="font-display font-bold text-5xl md:text-6xl text-white mb-6 leading-[1.1] drop-shadow-xl">SAME DAY<br/>DELIVERY</h1>
+<p class="text-gray-200 text-base mb-8 font-light leading-relaxed max-w-xs">Order before 2 PM and get your fresh cuts delivered in Nairobi today.</p>
+<button class="bg-primary text-white hover:bg-primary-dark font-bold py-4 px-10 rounded-full uppercase text-sm tracking-widest transition-all transform hover:scale-105 shadow-lg">Order Delivery</button>
+</div>
+</div>
+</div>
+<div class="absolute inset-y-0 left-0 flex items-center px-4 z-20 pointer-events-none">
+<div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white/70 border border-white/20 pointer-events-auto cursor-pointer hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</div>
+</div>
+<div class="absolute inset-y-0 right-0 flex items-center px-4 z-20 pointer-events-none">
+<div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white/70 border border-white/20 pointer-events-auto cursor-pointer hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<div class="absolute bottom-10 left-0 right-0 flex justify-center gap-3 z-30">
+<label class="cursor-pointer w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all peer-checked/slide1:bg-white peer-checked/slide1:w-8 peer-checked/slide1:rounded-full" for="slide1"></label>
+<label class="cursor-pointer w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all peer-checked/slide2:bg-white peer-checked/slide2:w-8 peer-checked/slide2:rounded-full" for="slide2"></label>
+<label class="cursor-pointer w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all peer-checked/slide3:bg-white peer-checked/slide3:w-8 peer-checked/slide3:rounded-full" for="slide3"></label>
+</div>
+<a class="absolute top-6 right-4 bg-accent/90 backdrop-blur-sm text-white px-5 py-2.5 rounded-l-full rounded-r-lg shadow-xl flex items-center gap-2 text-sm font-bold transform translate-x-2 hover:translate-x-0 transition-transform z-30 border border-white/10" href="tel:1234567890">
+<span class="material-symbols-outlined text-lg">call</span>
+<span class="tracking-wide">ORDER NOW</span>
+</a>
+</section>
+<section class="py-12 bg-white dark:bg-surface-dark transition-colors duration-300">
+<div class="px-6 mb-8">
+<h2 class="font-display font-bold text-3xl text-text-light dark:text-white mb-4">Market Rates</h2>
+<p class="text-text-muted dark:text-gray-400 text-sm leading-relaxed mb-6">
+                Check out our updated price list for the freshest Beef and Goat cuts. Tap on an item to see details.
+            </p>
+</div>
+<div class="mx-4 bg-background-light dark:bg-black rounded-lg p-6 shadow-xl border border-gray-100 dark:border-gray-800">
+<h3 class="font-display font-bold text-2xl mb-1 text-primary">Daily</h3>
+<h3 class="font-display font-extrabold text-4xl mb-6 text-text-light dark:text-white">Price List</h3>
+<div class="flex flex-col gap-2">
+<input class="hidden price-option" id="price_item_1" name="price_list" type="radio"/>
+<label class="flex justify-between items-center p-4 rounded-lg bg-gray-100 dark:bg-gray-800 cursor-pointer transition-all duration-300 border border-transparent hover:border-gray-200 dark:hover:border-gray-700" for="price_item_1">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gray-400">check_circle</span>
+<span class="font-medium text-text-light dark:text-gray-200">Goat Leg</span>
+</div>
+<span class="font-bold text-text-light dark:text-white">KSh 1,200/Kg</span>
+</label>
+<input checked="" class="hidden price-option" id="price_item_2" name="price_list" type="radio"/>
+<label class="flex justify-between items-center p-4 rounded-lg bg-gray-100 dark:bg-gray-800 cursor-pointer transition-all duration-300 border border-transparent hover:border-gray-200 dark:hover:border-gray-700" for="price_item_2">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gray-400">check_circle</span>
+<span class="font-medium text-text-light dark:text-gray-200">Premium Beef</span>
+</div>
+<span class="font-bold text-text-light dark:text-white">KSh 900/Kg</span>
+</label>
+<input class="hidden price-option" id="price_item_3" name="price_list" type="radio"/>
+<label class="flex justify-between items-center p-4 rounded-lg bg-gray-100 dark:bg-gray-800 cursor-pointer transition-all duration-300 border border-transparent hover:border-gray-200 dark:hover:border-gray-700" for="price_item_3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gray-400">check_circle</span>
+<span class="font-medium text-text-light dark:text-gray-200">Goat Chops</span>
+</div>
+<span class="font-bold text-text-light dark:text-white">KSh 1,150/Kg</span>
+</label>
+<input class="hidden price-option" id="price_item_4" name="price_list" type="radio"/>
+<label class="flex justify-between items-center p-4 rounded-lg bg-gray-100 dark:bg-gray-800 cursor-pointer transition-all duration-300 border border-transparent hover:border-gray-200 dark:hover:border-gray-700" for="price_item_4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gray-400">check_circle</span>
+<span class="font-medium text-text-light dark:text-gray-200">Beef Sirloin</span>
+</div>
+<span class="font-bold text-text-light dark:text-white">KSh 950/Kg</span>
+</label>
+</div>
+<button class="w-full mt-6 bg-gray-900 dark:bg-white text-white dark:text-black py-3 rounded-lg font-bold uppercase text-xs tracking-wider shadow hover:shadow-lg transition-shadow">Download Full PDF</button>
+</div>
+</section>
+<section class="py-12 px-4 bg-background-light dark:bg-background-dark transition-colors duration-300">
+<div class="flex justify-between items-end mb-8 px-2">
+<div>
+<span class="text-accent text-sm font-display font-bold uppercase">Online Store</span>
+<h2 class="text-3xl font-display font-bold text-text-light dark:text-white">Our Products</h2>
+</div>
+<a class="text-primary text-sm font-bold underline decoration-2 underline-offset-4" href="#">View All</a>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white dark:bg-surface-dark rounded-xl p-4 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-800">
+<div class="w-full aspect-square mb-3 relative rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-800">
+<img alt="Sirloin Steak" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7l4OEtY4_qVraSjuV_lzjSVrleJt2CniUQHlQEGlLHQJ3suhR15LulhbAGDH2xaxzBM0AtSgSWggrGdtVZ6rw85FAddhpbO6pW_HtAfc5HG_gtJvQxq5BoPgJ5aiaQzYXbfdqeXdmND9euNcz3Sn_H68YUueDaAbCeGsmWEb-irCsgqqyTrsHX1A1rLxGaUglbdn73iiVNE0Wa2QfM9CZfvpOltG7fdgQsHlHB2Zf8WdneotiU8chq7P9erlmSLazsXByf2paJC0"/>
+</div>
+<h3 class="font-display font-bold text-sm text-text-light dark:text-gray-200 mb-1">Sirloin Steak</h3>
+<span class="font-bold text-primary">KSh 1,450</span>
+<button class="mt-3 w-full py-2 rounded bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white dark:hover:bg-primary text-xs font-bold transition-colors">Add to Cart</button>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-xl p-4 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-800">
+<div class="w-full aspect-square mb-3 relative rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-800">
+<img alt="Rib-eye Steak" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVLpubjWKAhE84z6uBvyGyjnGhVSMXN-ezdFbiErMLV6z2WC7nN12dsOuF4-_GYGc3eihOr-IUtXyXE0QblDsYeL0VrranREP5Yy1WuqUA5OnuYG_0fFPptlx8FXfjHKipEA9G3MKT5R83_xeyiEoOwAXgKlXmS619z1JccyX_UxcCgc8HBEOuYr1BaotEzkZip30z5d2idd6j6MYO-TL82G9wmkInh1FP6oppewBt62pnrTTrdzG4ccM_LNbQ9zQ8JCPUkxqWpsc"/>
+</div>
+<h3 class="font-display font-bold text-sm text-text-light dark:text-gray-200 mb-1">Rib-eye Steak</h3>
+<span class="font-bold text-primary">KSh 1,600</span>
+<button class="mt-3 w-full py-2 rounded bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white dark:hover:bg-primary text-xs font-bold transition-colors">Add to Cart</button>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-xl p-4 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-800">
+<div class="w-full aspect-square mb-3 relative rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-800">
+<img alt="Oxtail" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyR4zgUetchIQEvlRaUmg8B8QsR2Pj2SBnaRjNxkw7e4XcLTYVDou1zzEJDvfWsWU4nAkHAonDELJPllkDKR0AL9iOGWtd4R2IAoH9KWgOrSWiDR9LbU9BavKTP5tFZ80MT9Bxau8no2MP3e1cPLwHNPyG5FVok0Q8nz7-J-Kbr0qtcgCrKGq9Xr_gf7lmZwdaAWHTEah1fV1H-zjh-uSK7USvA_aqYhKrPDbPhAHijyuLw_ikoaU7rsNtG9ZC2znVRuUg933pQZc"/>
+</div>
+<h3 class="font-display font-bold text-sm text-text-light dark:text-gray-200 mb-1">Oxtail Cut</h3>
+<span class="font-bold text-primary">KSh 950</span>
+<button class="mt-3 w-full py-2 rounded bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white dark:hover:bg-primary text-xs font-bold transition-colors">Add to Cart</button>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-xl p-4 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-800">
+<div class="w-full aspect-square mb-3 relative rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-800">
+<img alt="Beef Ribs" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVAMykmQcEiYIYqCcPvLzcitGNzrGjes5iSp4i6US71GxXw0o321o6hsMJL56SBCckC8WJVTRuF3Q8JHjL2dt4l2MM377WMjKnrUPX44GPxkDq25yGnAgnz1JgECxOA0dVB5rxqN9CLbvaGU0SferiUzUJy6BSguDg0VqyWMafHFZV45OdnUIA2CZpyPWuOY0NeW4X4sENJxyRa3uQDaGNr3DcLWNmMXELvzSgdWtwjMdvTtus6V20CV9SXn_7uEVHzWN1SM4lztM"/>
+</div>
+<h3 class="font-display font-bold text-sm text-text-light dark:text-gray-200 mb-1">Beef Short Ribs</h3>
+<span class="font-bold text-primary">KSh 1,100</span>
+<button class="mt-3 w-full py-2 rounded bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white dark:hover:bg-primary text-xs font-bold transition-colors">Add to Cart</button>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-xl p-4 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-800">
+<div class="w-full aspect-square mb-3 relative rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-800">
+<img alt="T-Bone Steak" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA9-OOjKHiNlGKyZpFgmO-XDaEgIoMv7zm91-uaWzTbyLg5w66uzxbqJPsbHkDJ1WuKRIcfSdDsLkmx4xlf6fVe7zTuneqOm6iv1wzEwt5PRpNBdVX-SvLDnDfeB6mee6VRSoBRNiFCeyiR1cBONlIlUK5ReBGvUXWBnXwLUMF9Aavryyea4ipe-R6jWeyOUW1gKD23dKeO0q55doQ9XaArFdS3EqAhB64ab0FOSNfgVMJP93GHR9o4CwjmJQDCioXdDR-DkIiMFk"/>
+</div>
+<h3 class="font-display font-bold text-sm text-text-light dark:text-gray-200 mb-1">T-Bone Steak</h3>
+<span class="font-bold text-primary">KSh 1,350</span>
+<button class="mt-3 w-full py-2 rounded bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white dark:hover:bg-primary text-xs font-bold transition-colors">Add to Cart</button>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-xl p-4 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-800">
+<div class="w-full aspect-square mb-3 relative rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-800">
+<img alt="Goat Ribs" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe_o2tSCq1CBD0_aVnu8f-m3jW3iYzGsk3JNCp5Ezh4-Kj7DrZGeYcyOJb6RLPxZyILRrZGayOy73zhaQ96op7OpV9Yj9Lqprn4X40pmnn806PGGI6Boh1mIdl40lUplyyWtx_Gm4j3FMiTS_NTonGvnGqyX1iMhyXDkl3ldoOTWjy1nvuqkY410KBFYlx1fI5bUCeN5-1BSWNRZA9hMapS--nFNjzI0YLRPHoLpXd_5ywq0zpwoqjBVgfg6KM89WCKp8r0fJAHu0"/>
+</div>
+<h3 class="font-display font-bold text-sm text-text-light dark:text-gray-200 mb-1">Goat Ribs</h3>
+<span class="font-bold text-primary">KSh 1,250</span>
+<button class="mt-3 w-full py-2 rounded bg-gray-200 dark:bg-gray-700 hover:bg-primary hover:text-white dark:hover:bg-primary text-xs font-bold transition-colors">Add to Cart</button>
+</div>
+</div>
+</section>
+<section class="px-6 py-12 bg-white dark:bg-surface-dark transition-colors duration-300">
+<div class="flex flex-col items-center text-center">
+<img alt="Fresh meat cuts with knife" class="w-64 h-auto drop-shadow-2xl mb-8 transform rotate-3 rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmlqKCzfqWFPvvD23wdiy-4d9au8iwXzlYDdF0oeNk9rZI1VLI11-MKa0F2Dv2bw9PXXQ37nlA6C_non0ifPgAwb2oP6ZS5-1iQSDWrtcJV7S2BlCBPNSWCzlx8sunSsKrb8FvyXD5pfZHGDbU7MglYg3suyU6uQRUybgiFMRWcFbQJArgHa-SM8b50GCPO8kOstkq-EIl1bv0LqEsxDl36pOFrWH-1v2RHOvhUj66yhBZMZI-DTMCELtaSWk8U8usJ8hPfabDrys"/>
+<h2 class="font-display font-bold text-3xl text-text-light dark:text-white mb-4">About Kenya Meat</h2>
+<p class="text-text-muted dark:text-gray-400 text-sm leading-relaxed mb-6">
+                We are Kenya's premier butchery, dedicated to providing the highest quality, grass-fed beef and free-range goat meat. Our commitment to freshness and ethical sourcing sets us apart.
+            </p>
+<ul class="text-left space-y-3 mb-8 w-full max-w-xs">
+<li class="flex items-center gap-3 text-sm text-text-light dark:text-gray-300">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                    Premium Grass-Fed Beef
+                </li>
+<li class="flex items-center gap-3 text-sm text-text-light dark:text-gray-300">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                    Fresh Free-Range Goat
+                </li>
+<li class="flex items-center gap-3 text-sm text-text-light dark:text-gray-300">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                    Halal Certified
+                </li>
+</ul>
+<button class="bg-primary hover:bg-primary-dark text-white font-medium py-3 px-8 rounded-full uppercase text-xs tracking-wider transition-colors shadow-lg shadow-primary/30">
+                Read More
+            </button>
+</div>
+</section>
+<section class="relative py-12 bg-gray-900 text-white overflow-hidden">
+<div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1551028726-20092d6e4b85?q=80&amp;w=1974&amp;auto=format&amp;fit=crop')] bg-cover bg-center"></div>
+<div class="relative z-10 grid grid-cols-2 gap-8 px-6 text-center">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-4xl mb-2 text-accent">eco</span>
+<h4 class="font-display font-bold uppercase text-sm mb-1">Local Sourcing</h4>
+<span class="text-xs text-gray-400">Farm to Fork</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-4xl mb-2 text-accent">inventory_2</span>
+<h4 class="font-display font-bold uppercase text-sm mb-1">Vacuum Pack</h4>
+<span class="text-xs text-gray-400">Packaging</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-4xl mb-2 text-accent">verified</span>
+<h4 class="font-display font-bold uppercase text-sm mb-1">Top Quality</h4>
+<span class="text-xs text-gray-400">KEBS Certified</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-4xl mb-2 text-accent">content_cut</span>
+<h4 class="font-display font-bold uppercase text-sm mb-1">Professional</h4>
+<span class="text-xs text-gray-400">Butchery</span>
+</div>
+</div>
+</section>
+<section class="flex flex-col md:flex-row">
+<div class="flex-1 bg-primary py-10 px-6 text-center text-white relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-display font-extrabold text-5xl mb-2">500+</h3>
+<p class="uppercase text-xs font-medium opacity-90">Happy Customers Weekly</p>
+</div>
+<div class="absolute top-1/2 -right-4 w-8 h-8 bg-primary transform rotate-45 z-20 hidden md:block"></div>
+</div>
+<div class="flex-1 bg-accent py-10 px-6 text-center text-white">
+<h3 class="font-display font-extrabold text-5xl mb-2">100%</h3>
+<p class="uppercase text-xs font-medium opacity-90">Fresh Guarantee</p>
+</div>
+<div class="flex-1 bg-background-light dark:bg-gray-800 p-8 flex items-center justify-center">
+<p class="text-xs text-center font-medium leading-relaxed text-text-light dark:text-gray-300">
+                Kenya Meat has been serving Nairobi with the finest cuts since 2010. Trusted by families and restaurants alike.
+            </p>
+</div>
+</section>
+<section class="w-full h-80 relative bg-gray-200 dark:bg-gray-800 overflow-hidden group">
+<div class="absolute inset-0 bg-[url('https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/36.75,-1.29,14,0/800x600?access_token=pk.eyJ1IjoiZXhhbXBsZSIsImEiOiJja2V4YW1wbGUifQ.example')] bg-cover bg-center opacity-70 group-hover:opacity-60 transition-opacity">
+<iframe class="w-full h-full border-0 grayscale opacity-80" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.808608298717!2d36.755498!3d-1.289498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1a6b0956972d%3A0xc4767e9c5f8509c2!2sDagoretti%20Market!5e0!3m2!1sen!2ske!4v1716380000000!5m2!1sen!2ske"></iframe>
+</div>
+<div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+<div class="bg-white dark:bg-surface-dark p-3 rounded-xl shadow-2xl flex flex-col items-center animate-bounce">
+<span class="material-symbols-outlined text-primary text-4xl">location_on</span>
+<div class="mt-2 text-center">
+<h4 class="font-display font-bold text-text-light dark:text-white text-sm">Dagoretti Kichinjio</h4>
+<p class="text-[10px] text-gray-500">Nairobi, Kenya</p>
+</div>
+</div>
+<div class="w-4 h-2 bg-black/20 rounded-[100%] blur-[2px] mt-1"></div>
+</div>
+<div class="absolute bottom-4 left-4 right-4 flex gap-3">
+<button class="flex-1 bg-white dark:bg-surface-dark text-text-light dark:text-white py-3 rounded-lg shadow-lg font-bold text-xs uppercase flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined text-lg">directions</span>
+                Get Directions
+            </button>
+</div>
+</section>
+<footer class="bg-gray-900 text-gray-400 py-12 px-6 border-t border-gray-800">
+<div class="flex flex-col gap-8">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-white text-3xl">restaurant_menu</span>
+<div class="flex flex-col leading-none">
+<span class="font-display font-bold text-xl uppercase tracking-wider text-white">KENYA MEAT</span>
+<span class="text-[10px] text-primary uppercase font-bold tracking-widest -mt-1">Premium Butchery</span>
+</div>
+</div>
+<p class="text-sm leading-relaxed">Providing high-quality beef and goat meat to Kenya since 2010.</p>
+</div>
+<div>
+<h4 class="text-white font-display font-bold uppercase mb-4 text-sm">Quick Links</h4>
+<ul class="space-y-2 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">Home</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Services</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-display font-bold uppercase mb-4 text-sm">Contact Info</h4>
+<ul class="space-y-3 text-sm">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">location_on</span>
+<span>Nairobi, Kenya</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">call</span>
+<span>+254 700 000 000</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">mail</span>
+<span>info@kenyameat.co.ke</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-gray-800 text-xs text-center">
+<p>© 2024 Kenya Meat. All Rights Reserved.</p>
+<div class="flex justify-center gap-6 mt-6">
+<a class="text-gray-400 hover:text-white transition-colors p-2 bg-gray-800 rounded-full" href="#">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+<path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
+</svg>
+</a>
+<a class="text-gray-400 hover:text-white transition-colors p-2 bg-gray-800 rounded-full" href="#">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+<path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.468 2.373c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" fill-rule="evenodd"></path>
+</svg>
+</a>
+<a class="text-gray-400 hover:text-white transition-colors p-2 bg-gray-800 rounded-full" href="#">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+<path d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z"></path>
+</svg>
+</a>
+</div>
+</div>
+</footer>
+</main>
+<nav class="fixed bottom-0 w-full bg-white dark:bg-surface-dark border-t border-gray-100 dark:border-gray-800 py-2 px-6 flex justify-between items-center z-50 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+<a class="flex flex-col items-center text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center text-gray-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-[10px] font-medium mt-1">Catalog</span>
+</a>
+<div class="relative -top-6">
+<button class="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/40 border-4 border-white dark:border-surface-dark transform hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-2xl">shopping_basket</span>
+</button>
+</div>
+<a class="flex flex-col items-center text-gray-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-medium mt-1">Saved</span>
+</a>
+<a class="flex flex-col items-center text-gray-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium mt-1">Profile</span>
+</a>
+</nav>
+</body></html>
